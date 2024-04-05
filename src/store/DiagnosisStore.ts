@@ -18,7 +18,12 @@ class DiagnosisStore {
         try {
             const response = await fetch(API_BASE_URL + `/patients/${patientId}/diagnoses/`, {
                 headers: {
-                    'Authorization': `Bearer ${this.authStore.accessToken}`
+                    'Authorization': `Bearer ${this.authStore.accessToken}`,
+                    "accept": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+                    "ngrok-skip-browser-warning": "69420"
                 }
             });
             const data = await response.json();
