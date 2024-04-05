@@ -34,13 +34,13 @@ const Header: React.FC = observer(() => {
                         <Typography
                             variant="h6"
                             component="div"
-                            sx={{ flexGrow: 1, fontWeight: 'bold', display: { xs: 'none', sm: 'block' } }}
+                            sx={{ flexGrow: 1, fontWeight: 'bold' }}
                         >
                             МНСК
                         </Typography>
                         <HealthAndSafetyIcon sx={{ marginLeft: 1 }} />
                     </Box>
-                    <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+                    <Box >
                             <Button
                                 variant="outlined"
                                 color="inherit"
