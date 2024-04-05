@@ -202,7 +202,7 @@ const DiagnosesPage: React.FC = observer(() => {
                         <ArrowBack />
                     </IconButton>
                 </Link>
-                <Typography variant="h4" sx={{ mt: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', width: '100%', marginLeft: '10px' }}>Страница диагнозов</Typography>
+                <Typography variant="h5" sx={{ mt: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', width: '100%', marginLeft: '10px' }}>Страница диагнозов</Typography>
             </Box>
             {patientData && (
                 <Box
