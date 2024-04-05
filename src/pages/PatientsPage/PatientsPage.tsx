@@ -18,7 +18,7 @@ const PatientsPage: React.FC = observer(() => {
 
     return (
         <div>
-            <Typography variant="h4" sx={{ display: 'flex', justifyContent: 'center', marginTop: 4, marginBottom: 2, fontWeight: 'bold' }}>Страница пациентов</Typography>
+            <Typography variant="h5" sx={{ display: 'flex', justifyContent: 'center', marginTop: 4, marginBottom: 2, fontWeight: 'bold' }}>Страница пациентов</Typography>
             <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginRight: 8, mt: 5 }} >
                 <Button onClick={handleOpenModal} variant="contained" color="primary" >
                     Добавить пациента
