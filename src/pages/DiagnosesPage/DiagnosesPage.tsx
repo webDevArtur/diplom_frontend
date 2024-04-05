@@ -6,6 +6,7 @@ import { ArrowBack, Edit as EditIcon, Delete as DeleteIcon } from '@mui/icons-ma
 import rootStore from '../../store/RootStore';
 import { Patient } from '../../models/PatientModel';
 import { Diagnosis } from '../../models/DiagnosisModel';
+import API_BASE_URL from '../../config';
 
 const DiagnosesPage: React.FC = observer(() => {
     const { patientId } = useParams<{ patientId: string }>();
@@ -27,9 +28,14 @@ const DiagnosesPage: React.FC = observer(() => {
             setLoading(true); // Установка loading в true перед началом загрузки
             try {
                 if (!patientId) return;
-                const response = await fetch(`http://127.0.0.1:8000/patients/${patientId}`, {
+                const response = await fetch(API_BASE_URL + `/patients/${patientId}`, {
                     headers: {
-                        'Authorization': `Bearer ${rootStore.authStore.accessToken}`
+                        'Authorization': `Bearer ${rootStore.authStore.accessToken}`,
+                        "accept": "application/json",
+                        "Access-Control-Allow-Origin": "*",
+                        "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+                        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+                        "ngrok-skip-browser-warning": "69420"
                     }
                 });
                 const data = await response.json();
