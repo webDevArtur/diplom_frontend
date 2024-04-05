@@ -121,7 +121,7 @@ const DiagnosPage: React.FC = observer(() => {
 
     return (
         <Box>
-            <Typography  variant="h4" sx={{ display: 'flex', justifyContent: 'center', marginTop: 4, marginBottom: 2, fontWeight: 'bold' }}>Страница изображений</Typography>
+            <Typography  variant="h5" sx={{ display: 'flex', justifyContent: 'center', marginTop: 4, marginBottom: 2, fontWeight: 'bold' }}>Страница изображений</Typography>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px', marginTop: '20px', marginLeft: '20px', marginRight: '20px' }}>
                 <Link to={`/patients/${patientId}/diagnoses`}>
                     <IconButton>
