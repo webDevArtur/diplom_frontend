@@ -37,7 +37,12 @@ class PatientStore {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.authStore.accessToken}`
+                    'Authorization': `Bearer ${this.authStore.accessToken}`,
+                    "accept": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+                    "ngrok-skip-browser-warning": "69420"
                 },
                 body: JSON.stringify(newPatientData)
             });
@@ -53,7 +58,12 @@ class PatientStore {
             await fetch(API_BASE_URL + `/patients/${patientId}`, {
                 method: 'DELETE',
                 headers: {
-                    'Authorization': `Bearer ${this.authStore.accessToken}`
+                    'Authorization': `Bearer ${this.authStore.accessToken}`,
+                    "accept": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+                    "ngrok-skip-browser-warning": "69420"
                 }
             });
             // Удаление пациента из массива после успешного удаления на сервере
@@ -69,7 +79,12 @@ class PatientStore {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.authStore.accessToken}`
+                    'Authorization': `Bearer ${this.authStore.accessToken}`,
+                    "accept": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+                    "ngrok-skip-browser-warning": "69420"
                 },
                 body: JSON.stringify(updatedPatientData)
             });
@@ -87,7 +102,12 @@ class PatientStore {
         try {
             const response = await fetch(API_BASE_URL + `/patients/${patientId}`, {
                 headers: {
-                    'Authorization': `Bearer ${this.authStore.accessToken}`
+                    'Authorization': `Bearer ${this.authStore.accessToken}`,
+                    "accept": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+                    "ngrok-skip-browser-warning": "69420"
                 }
             });
             const patient = await response.json();

@@ -16,7 +16,12 @@ class AuthStore {
             const response = await fetch(API_BASE_URL + '/login', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    "accept": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+                    "ngrok-skip-browser-warning": "69420"
                 },
                 body: new URLSearchParams({ username, password })
             });
@@ -45,7 +50,12 @@ class AuthStore {
             const response = await fetch(API_BASE_URL + '/logout', {
                 method: 'POST',
                 headers: {
-                    'Authorization': `Bearer ${this.accessToken}`
+                    'Authorization': `Bearer ${this.accessToken}`,
+                    "accept": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+                    "ngrok-skip-browser-warning": "69420"
                 }
             });
 

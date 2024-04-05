@@ -41,8 +41,12 @@ const ImageSegmentation: React.FC<ImageSegmentationProps> = ({ imageBase64, onCl
                     method: 'POST',
                     body: formData,
                     headers: {
-                        'accept': 'application/json',
-                        'Authorization': `Bearer ${rootStore.authStore.accessToken}`
+                        'Authorization': `Bearer ${rootStore.authStore.accessToken}`,
+                        "accept": "application/json",
+                        "Access-Control-Allow-Origin": "*",
+                        "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+                        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+                        "ngrok-skip-browser-warning": "69420"
                     }
                 });
 

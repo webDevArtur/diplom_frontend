@@ -38,7 +38,12 @@ class DiagnosisStore {
             await fetch(API_BASE_URL + `/diagnoses/${diagnosisId}/`, {
                 method: 'DELETE',
                 headers: {
-                    'Authorization': `Bearer ${this.authStore.accessToken}`
+                    'Authorization': `Bearer ${this.authStore.accessToken}`,
+                    "accept": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+                    "ngrok-skip-browser-warning": "69420"
                 }
             });
             // Удаление диагноза из массива после успешного удаления на сервере
@@ -59,7 +64,12 @@ class DiagnosisStore {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${this.authStore.accessToken}`,
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "accept": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+                    "ngrok-skip-browser-warning": "69420"
                 },
                 body: JSON.stringify({
                     patient_id: patientId,
@@ -92,7 +102,12 @@ class DiagnosisStore {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${this.authStore.accessToken}`,
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "accept": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+                    "ngrok-skip-browser-warning": "69420"
                 },
                 body: JSON.stringify({
                     patient_id: updatedDiagnosis.patient_id, // Включаем patient_id в объект

@@ -30,7 +30,12 @@ const ImageClassification: React.FC<ImageClassificationProps> = ({ imageBase64, 
                 const response = await fetch(API_BASE_URL + '/classify_diagnosis/', {
                     method: 'POST',
                     headers: {
-                        'Authorization': `Bearer ${rootStore.authStore.accessToken}`
+                        'Authorization': `Bearer ${rootStore.authStore.accessToken}`,
+                        "accept": "application/json",
+                        "Access-Control-Allow-Origin": "*",
+                        "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+                        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+                        "ngrok-skip-browser-warning": "69420"
                     },
                     body: formData
                 });

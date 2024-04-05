@@ -30,7 +30,11 @@ class ImageStore {
             const response = await fetch(API_BASE_URL + `/images/${imageId}/`, {
                 method: 'DELETE',
                 headers: {
-                    'accept': 'application/json'
+                    "accept": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+                    "ngrok-skip-browser-warning": "69420"
                 }
             });
             if (!response.ok) {
@@ -47,6 +51,13 @@ class ImageStore {
         try {
             const response = await fetch(API_BASE_URL + `/diagnoses/${diagnosisId}/images/`, {
                 method: 'POST',
+                headers: {
+                    "accept": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+                    "ngrok-skip-browser-warning": "69420"
+                },
                 body: imageData
             });
             if (!response.ok) {
