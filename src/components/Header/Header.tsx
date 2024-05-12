@@ -17,7 +17,6 @@ const darkTheme = createTheme({
 const Header: React.FC = observer(() => {
     const authStore = rootStore.authStore;
 
-    // Функция для выхода из системы
     const handleLogout = async () => {
         try {
             await authStore.logout();
@@ -36,19 +35,24 @@ const Header: React.FC = observer(() => {
                             component="div"
                             sx={{ flexGrow: 1, fontWeight: 'bold' }}
                         >
-                            МНСК
+                            АТЛАНТ
                         </Typography>
                         <HealthAndSafetyIcon sx={{ marginLeft: 1 }} />
                     </Box>
-                    <Box >
-                            <Button
-                                variant="outlined"
-                                color="inherit"
-                                onClick={handleLogout} // Вызываем функцию выхода при нажатии на кнопку
-                                sx={{ fontWeight: 'bold' }}
-                            >
-                                Выход
-                            </Button>
+                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        {authStore.isLoggedIn && (
+                            <Typography variant="body1" sx={{ fontWeight: 'bold', marginRight: '12px' }}>
+                                {authStore.fullName}
+                            </Typography>
+                        )}
+                        <Button
+                            variant="outlined"
+                            color="inherit"
+                            onClick={handleLogout}
+                            sx={{ fontWeight: 'bold' }}
+                        >
+                            Выход
+                        </Button>
                     </Box>
                 </Toolbar>
             </AppBar>

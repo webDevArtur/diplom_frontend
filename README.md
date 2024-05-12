@@ -1,29 +1,30 @@
-# Фронтенд для диагностики новообразований кожи
+# React + TypeScript + Vite
 
-Этот репозиторий содержит фронтенд-приложение, разработанное с использованием React и TypeScript для помощи в диагностике новообразований кожи. Фронтенд предоставляет различные функциональности, включая добавление, просмотр, редактирование и удаление пациентов, диагнозов и изображений. Кроме того, он включает в себя систему аутентификации.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Выдающейся особенностью этого фронтенда является его интеграция с нейронной сетью, обученной на наборе данных из 7500 изображений для классификации и сегментации новообразований кожи. Нейронная сеть достигает точности 86% для классификации и 85% для сегментации, различая невусы, меланому и себорейный кератоз.
+Currently, two official plugins are available:
 
-![image](https://github.com/webDevArtur/diplom_frontend/assets/141954990/7d109e51-ba1d-4ee1-8744-d24093673726)
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
+## Expanding the ESLint configuration
 
-## Возможности
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- **Управление пациентами**: CRUD-операции для управления записями пациентов.
-- **Управление диагнозами**: Возможность добавления, просмотра, редактирования и удаления информации о диагнозах.
-- **Управление изображениями**: Загрузка и управление изображениями, связанными с диагнозами.
-- **Аутентификация**: Безопасная система аутентификации для контроля доступа пользователей.
-- **Классификация новообразований кожи**: Интеграция с нейронной сетью для классификации новообразований кожи на невусы, меланому и себорейный кератоз с точностью 86%.
-- **Сегментация новообразований кожи**: Использует нейронную сеть для сегментации новообразований кожи с точностью 85%.
+- Configure the top-level `parserOptions` property like this:
 
-## Начало работы
-
-Для запуска фронтенда локально выполните следующие шаги:
-
-```bash
-  git clone https://github.com/ваше-имя-пользователя/фронтенд-диагностики-новообразований-кожи.git
-
-  npm install
-
-  npm run dev
+```js
+export default {
+  // other rules...
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    tsconfigRootDir: __dirname,
+  },
+}
 ```
+
+- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list

@@ -168,7 +168,7 @@ const DiagnosesPage: React.FC = observer(() => {
             };
 
             await rootStore.diagnosisStore.updateDiagnosis(updatedDiagnosis);
-
+            resetFields();
             setShowModal(false);
             setEditingDiagnosis(null);
         } catch (error: any) {
@@ -193,6 +193,14 @@ const DiagnosesPage: React.FC = observer(() => {
         const formattedDate = `${date.getDate() < 10 ? '0' : ''}${date.getDate()}-${date.getMonth() < 9 ? '0' : ''}${date.getMonth() + 1}-${date.getFullYear()}`;
         return formattedDate;
     };
+
+    const resetFields = () => {
+        setNewDiagnosis('');
+        setNewDiagnosisDate('');
+        setNewDescription('');
+        setEditingDiagnosis(null);
+    };
+
 
     return (
         <Box sx={{ padding: '20px', marginBottom: '20px' }}>
@@ -263,7 +271,7 @@ const DiagnosesPage: React.FC = observer(() => {
                     <Alert severity="info" sx={{ mt: 3, width: '90%', marginLeft: 'auto', marginRight: 'auto', marginBottom: 3 }}>Диагнозов нет</Alert>
                 )
             )}
-            <Modal open={showModal} onClose={() => { setShowModal(false); handleCloseError(); }}>
+            <Modal open={showModal} onClose={() => { setShowModal(false); handleCloseError(); resetFields(); }}>
                 <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', boxShadow: 24, p: 4, minWidth: '300px', maxWidth: '80vw' }}>
                     <Typography variant="h5" gutterBottom sx={{ marginBottom: 4 }}>
                         {editingDiagnosis ? 'Редактировать диагноз' : 'Добавить диагноз'}

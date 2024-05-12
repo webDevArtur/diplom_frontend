@@ -4,11 +4,12 @@ import API_BASE_URL from '../config';
 class AuthStore {
     isLoggedIn: boolean = false;
     accessToken: string | null = null;
-    error: string | null = null; // Указываем тип string для переменной error
+    fullName: string | null = null;
+    error: string | null = null;
 
     constructor() {
         makeAutoObservable(this);
-        this.loadAuthState(); // Загружаем состояние авторизации при инициализации
+        this.loadAuthState();
     }
 
     async login(username: string, password: string): Promise<void> {
@@ -31,6 +32,7 @@ class AuthStore {
             if (response.ok) {
                 this.isLoggedIn = true;
                 this.accessToken = data.access_token;
+                this.fullName = data.full_name; // Сохраняем полученное ФИО
                 this.error = null; // Обнуляем ошибку при успешном входе
 
                 // Сохраняем состояние авторизации
@@ -62,17 +64,22 @@ class AuthStore {
             const data = await response.json();
 
             if (response.ok) {
+                // Обнуляем все поля при успешном выходе
                 this.isLoggedIn = false;
                 this.accessToken = null;
+                this.fullName = null; // Обнуляем ФИО
+                this.error = null;
 
+                // Сохраняем состояние авторизации
                 this.saveAuthState();
             } else {
                 this.isLoggedIn = false;
                 this.accessToken = null;
-
-                this.saveAuthState();
-                // Устанавливаем сообщение об ошибке в случае неудачного выхода
+                this.fullName = null; // Обнуляем ФИО
                 this.error = typeof data.message === 'string' ? data.message : 'Logout failed';
+
+                // Сохраняем состояние авторизации
+                this.saveAuthState();
             }
         } catch (error) {
             // Обработка ошибки
@@ -84,7 +91,8 @@ class AuthStore {
     private saveAuthState() {
         localStorage.setItem('authState', JSON.stringify({
             isLoggedIn: this.isLoggedIn,
-            accessToken: this.accessToken
+            accessToken: this.accessToken,
+            fullName: this.fullName // Сохраняем ФИО в локальное хранилище
         }));
     }
 
@@ -92,9 +100,10 @@ class AuthStore {
     private loadAuthState() {
         const authState = localStorage.getItem('authState');
         if (authState) {
-            const { isLoggedIn, accessToken } = JSON.parse(authState);
+            const { isLoggedIn, accessToken, fullName } = JSON.parse(authState);
             this.isLoggedIn = isLoggedIn;
             this.accessToken = accessToken;
+            this.fullName = fullName; // Загружаем ФИО из локального хранилища
         }
     }
 }
